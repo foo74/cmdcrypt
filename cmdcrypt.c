@@ -1,24 +1,24 @@
-#include <stdio.h>  // for printf(), getchar(), putchar()
-#include <stdlib.h> // for exit()
-#include <unistd.h>
-#include <errno.h>
-
+#include "cmdcrypt.h"
 
 /* -h for hash, -c for check hash. */
 int main(int argc, char *argv[])
 {
 
-   char input[10];
-   //char a;
+   /* The input buffer. We need 2 more than allowed since last char will be newline
+    * which will break the while loop. Then it will print the buffer, but if the
+    * buffer does not have the newline then we get garbage.
+    */
+   char input[12]; // 0 to 11
 
+   /* If no command line arguments, then take input from stdin. */
    if ( argc == 1 )
    {
       int counter = 0;
 
-      while ( counter < 10 && (input[counter] = getchar()) != '\n' )
+      while ( (input[counter++] = getchar()) != '\n')
       {
-         counter++;
-         if ( counter == 10 )
+         // If we get to 11 then our buffer is full.
+         if ( counter > 10 )
          {
             printf("\n\nERROR: 10 chars exceeded!\n\n");
             exit ( 1 );
@@ -29,6 +29,17 @@ int main(int argc, char *argv[])
 
       printf("\n\n");
    }
+   else if ( argc == 2 )
+   {
+      printf("\n\nInput = %s\n\n", argv[1]);
+   }
+   else
+   {
+      printf("\n\nUsage: blah blah\n\n");
+   }
+
+
+/*
    else
    {
       int result = -1;
@@ -57,6 +68,8 @@ int main(int argc, char *argv[])
       else
          printf("\nFAILURE\n\n");
    }
+*/
+
 
    return 0;
 }
