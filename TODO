@@ -1,0 +1,7 @@
+Need to add error handling.
+
+Need to add the number of rounds as command line args.
+
+Need to figure out best practice for command line args.
+
+Need to keep looping until control-c.

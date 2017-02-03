@@ -13,4 +13,4 @@ edit:
 	vim cmdcrypt.c
 
 clean:
-	rm cmdcrypt *.core
+	rm cmdcrypt 

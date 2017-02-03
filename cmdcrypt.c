@@ -8,7 +8,9 @@ int main(int argc, char *argv[])
     * which will break the while loop. Then it will print the buffer, but if the
     * buffer does not have the newline then we get garbage.
     */
-   char input[12]; // 0 to 11
+   char input[12] = {0}; // 0 to 11
+   char hashed_value[1000] = {0};
+   const char *pref = "bcrypt,a";
 
    /* If no command line arguments, then take input from stdin. */
    if ( argc == 1 )
@@ -25,7 +27,11 @@ int main(int argc, char *argv[])
          }
       }
 
-      printf("\nYou entered: %s", input);
+
+      //printf("\nYou entered: %s", input);
+      crypt_newhash(input, pref, hashed_value, sizeof(hashed_value));
+      //printf("hashed value is: %s\n\n", hashed_value);
+      printf("%s", hashed_value);
 
       printf("\n\n");
    }
