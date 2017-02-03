@@ -5,3 +5,5 @@ Need to add the number of rounds as command line args.
 Need to figure out best practice for command line args.
 
 Need to keep looping until control-c.
+
+Review source code for encrypt().
